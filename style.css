@@ -13,6 +13,11 @@ footer {
 img {
     max-width: 100%;
 }
+#light {
+    width: 20vw;
+    position: absolute;
+    right: 3vw;
+}
 #stats, #actions {
     display: flex;
     flex-flow: row wrap;
