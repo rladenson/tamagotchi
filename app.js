@@ -2,7 +2,7 @@ let tamagotchi;
 class Game {
     constructor(name) {
         this.name = name;
-        if(name === "")
+        if (name === "")
             this.name = "Your tamagotchi";
         document.getElementById("name").textContent = this.name;
 
