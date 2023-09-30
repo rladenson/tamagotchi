@@ -22,6 +22,11 @@ class Game {
             this.hunger.textContent++;
             this.sleepiness.textContent++;
             this.boredom.textContent++;
+            if (this.hunger.textContent >= 10 ||
+                this.sleepiness.textContent >= 10 ||
+                this.boredom.textContent >= 10) {
+                this.die();
+            }
         }, 10 * 1000) //10 sec
     }
     feed = () => {
@@ -47,6 +52,16 @@ class Game {
             this.boredom.textContent = 0;
         else
             this.boredom.textContent = boredom;
+    }
+    die = () => {
+        clearInterval(this.ageInterval);
+        clearInterval(this.statsInterval);
+        document.getElementById("stats").style.display = "none";
+        const endgame = document.createElement("h1");
+        const color = "rgba(255, 0, 0, 0.4)";
+        endgame.style.textShadow = `-1px 0 2px ${color}, 0 1px 2px ${color}, 1px 0 2px ${color}, 0 -1px 2px ${color}`;
+        endgame.textContent = `${this.name} died. They lived to the age of ${this.age.textContent}`;
+        document.getElementById("game").appendChild(endgame);
     }
 }
 
