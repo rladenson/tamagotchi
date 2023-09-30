@@ -2,7 +2,9 @@ let tamagotchi;
 class Game {
     constructor(name) {
         this.name = name;
-        document.getElementById("name").textContent = name;
+        if(name === "")
+            this.name = "Your tamagotchi";
+        document.getElementById("name").textContent = this.name;
 
         this.hunger = document.getElementById("hunger");
         this.hunger.textContent = 3;
@@ -56,7 +58,7 @@ class Game {
     die = () => {
         clearInterval(this.ageInterval);
         clearInterval(this.statsInterval);
-        document.getElementById("stats").style.display = "none";
+        document.getElementById("actions").style.display = "none";
         const endgame = document.createElement("h1");
         const color = "rgba(255, 0, 0, 0.4)";
         endgame.style.textShadow = `-1px 0 2px ${color}, 0 1px 2px ${color}, 1px 0 2px ${color}, 0 -1px 2px ${color}`;
