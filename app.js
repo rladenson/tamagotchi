@@ -18,6 +18,11 @@ class Game {
         document.getElementById("play").onclick = this.play;
 
         this.ageInterval = setInterval(() => this.age.textContent++, 1 * 1000 * 60) //1min
+        this.statsInterval = setInterval(() => {
+            this.hunger.textContent++;
+            this.sleepiness.textContent++;
+            this.boredom.textContent++;
+        }, 10 * 1000) //10 sec
     }
     feed = () => {
         let hunger = this.hunger.textContent;
