@@ -1,5 +1,9 @@
+let tamagotchi;
 class Game {
-    constructor() {
+    constructor(name) {
+        this.name = name;
+        document.getElementById("name").textContent = name;
+
         this.hunger = document.getElementById("hunger");
         this.hunger.textContent = 3;
         this.sleepiness = document.getElementById("sleepiness");
@@ -39,5 +43,8 @@ class Game {
     }
 }
 
-const tamagotchi = new Game();
-
+const newGame = () => {
+    tamagotchi = new Game(document.getElementById("nameInput").value);
+    document.getElementById("setup").setAttribute("hidden", "");
+    document.getElementById("game").removeAttribute("hidden");
+}
