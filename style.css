@@ -6,33 +6,41 @@ body {
     margin: 0 8px;
     background-color: rgba(255, 255, 154, .2);
 }
+
 footer {
     margin-top: auto;
     padding-top: 1em;
 }
+
 img {
     max-width: 100%;
 }
+
 #light {
     width: 20vw;
     position: absolute;
     right: 3vw;
 }
-#stats, #actions {
+
+#stats,
+#actions {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     margin: 5px;
     border-radius: 5px;
 }
-#stats > span {
+
+#stats>span {
     padding: 5px;
 }
+
 #stats {
     background-color: rgba(221, 160, 221, .4);
     border: 3px solid rgba(221, 160, 221, 1);
     text-shadow: 0 0 5px white;
 }
+
 #actions {
     background-color: rgba(208, 124, 208, .4);
     border: 3px solid rgba(208, 124, 208, 1);
