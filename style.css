@@ -12,6 +12,23 @@ footer {
     padding-top: 1em;
 }
 
+#fish {
+    font-family: monospace;
+    font-weight: bolder;
+}
+
+.red {
+    color: rgb(210,35,42);
+}
+
+.orange {
+    color: rgb(245,132,31);
+}
+
+.yellow {
+    color: rgb(253,186,18);
+}
+
 img {
     max-width: 100%;
 }
