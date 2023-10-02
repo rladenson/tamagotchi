@@ -41,6 +41,7 @@ img {
 
 #light {
     width: 20vw;
+    max-width: 10em;
     position: absolute;
     right: 3vw;
 }
