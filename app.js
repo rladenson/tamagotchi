@@ -32,9 +32,10 @@ class Game {
             }
         }, 10 * 1000) //10 sec
         this.timeActive = 0;
+        this.emotion = "neutral";
         this.fishInterval = setInterval(() => {
-            updateFish(this.emotion, this.timeActive % 3);
             this.timeActive++;
+            updateFish(this.emotion, this.timeActive % 3);
         }, 1000); // 1 sec
     }
     feed = () => {
@@ -49,6 +50,16 @@ class Game {
     }
     lights = () => {
         if (!this.lock) {
+            this.lock = true;
+            document.getElementById("light").src = "img/light_off.png";
+            this.emotion = "asleep";
+            updateFish(this.emotion, this.timeActive % 3);
+            setTimeout(() => {
+                document.getElementById("light").src = "img/light_on.png";
+                this.emotion = "neutral";
+                updateFish(this.emotion, this.timeActive % 3);
+                this.lock = false;
+            }, 2000)
             let sleepiness = this.sleepiness.textContent;
             sleepiness -= 10;
             if (sleepiness <= 0)
