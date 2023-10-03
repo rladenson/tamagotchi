@@ -40,6 +40,14 @@ class Game {
     }
     feed = () => {
         if (!this.lock) {
+            this.lock = true;
+            this.emotion = "eating";
+            updateFish(this.emotion, this.timeActive);
+            setTimeout(() => {
+                this.emotion = "neutral";
+                updateFish(this.emotion, this.timeActive);
+                this.lock = false;
+            }, 2000)
             let hunger = this.hunger.textContent;
             hunger -= 4;
             if (hunger <= 0)

@@ -2,7 +2,7 @@ const fishEl = document.getElementById("fish");
 const fish = ["${bubble1}",
     "&nbsp;${bubble2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___",
     "&nbsp;&nbsp;${bubble3}&nbsp;&nbsp;&nbsp;___======____=<span class='orange'>-</span><span class='yellow'>-</span><span class='orange'>-=</span>)",
-    "&nbsp;&nbsp;&nbsp;/T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\_<span class='yellow'>--=</span><span class='orange'>==</span>)",
+    "&nbsp;&nbsp;&nbsp;${mouth}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\_<span class='yellow'>--=</span><span class='orange'>==</span>)",
     "&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;\\&nbsp;<span class='orange'>${eye}</span>&nbsp;&nbsp;&nbsp;\\~&nbsp;&nbsp;&nbsp;&nbsp;\\_<span class='yellow>-=</span><span class='orange'>=</span>)",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;)J<span class='orange'>~~</span>&nbsp;&nbsp;&nbsp;&nbsp;\\<span class='yellow'>-=</span>)",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\\\___/&nbsp;&nbsp;)JJ<span class='orange'>~</span><span class='yellow'>~~</span>&nbsp;&nbsp;&nbsp;\\)",
@@ -35,23 +35,31 @@ const updateFish = (emotion = "neutral", timeActive = 0) => {
     let bubble2 = "o";
     let bubble3 = ".";
     let eye = "(<span class='yellow'>0</span>)";
+    let mouth = "/T";
     if (emotion === "asleep") {
         bubble1 = "Z";
         bubble2 = "z";
         bubble3 = "z";
         eye = "--'";
         height = 4;
+    } else if (emotion === "eating") {
+        height = 0;
+        bubble1 = "&nbsp;&nbsp;★";
+        bubble2 = "◆";
+        bubble3 = "●";
+        mouth = "\\'"
     }
     
     for (let i = 0; i < height + 2; i++) {
         fishEl.innerHTML += "<br>";
     }
-    
+
     fish.forEach((line, i) => {
         fishEl.innerHTML += `<span>${line.replace("${bubble1}", bubble1)
             .replace("${bubble2}", bubble2)
             .replace("${bubble3}", bubble3)
             .replace("${eye}", eye)
+            .replace("${mouth}", mouth)
             }</span><br>`;
     });
 }
