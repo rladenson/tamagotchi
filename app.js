@@ -60,12 +60,14 @@ class Game {
         if (!this.lock) {
             this.lock = true;
             document.getElementById("light").src = "img/light_off.png";
+            document.body.style.backgroundColor = "rgba(79, 79, 37, 0.2)"
             this.emotion = "asleep";
             updateFish(this.emotion, this.timeActive);
             setTimeout(() => {
                 document.getElementById("light").src = "img/light_on.png";
                 this.emotion = "neutral";
                 updateFish(this.emotion, this.timeActive);
+                document.body.style.backgroundColor = "rgba(255, 255, 154, .2)"
                 this.lock = false;
             }, 2000)
             let sleepiness = this.sleepiness.textContent;
