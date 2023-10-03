@@ -16,10 +16,20 @@ const fish = ["${bubble1}",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(J<span class='orange'>JJ</span>|&nbsp;\\UUU",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(UU)"];
 
-const updateFish = (emotion = "neutral", height = 0) => {
+const updateFish = (emotion = "neutral", timeActive = 0) => {
     fishEl.innerHTML = "";
-    for (let i = 0; i < height + 2; i++) {
-        fishEl.innerHTML += "<br>";
+    let height = 0;
+    switch(timeActive % 4) {
+        case 1: 
+        case 3:
+            height = 2;
+            break;
+        case 2:
+            height = 3;
+            break;
+        default:
+            height = 0;
+            break;
     }
     let bubble1 = "O";
     let bubble2 = "o";
@@ -30,7 +40,13 @@ const updateFish = (emotion = "neutral", height = 0) => {
         bubble2 = "z";
         bubble3 = "z";
         eye = "--'";
+        height = 4;
     }
+    
+    for (let i = 0; i < height + 2; i++) {
+        fishEl.innerHTML += "<br>";
+    }
+    
     fish.forEach((line, i) => {
         fishEl.innerHTML += `<span>${line.replace("${bubble1}", bubble1)
             .replace("${bubble2}", bubble2)

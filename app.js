@@ -35,7 +35,7 @@ class Game {
         this.emotion = "neutral";
         this.fishInterval = setInterval(() => {
             this.timeActive++;
-            updateFish(this.emotion, this.timeActive % 3);
+            updateFish(this.emotion, this.timeActive);
         }, 1000); // 1 sec
     }
     feed = () => {
@@ -53,11 +53,11 @@ class Game {
             this.lock = true;
             document.getElementById("light").src = "img/light_off.png";
             this.emotion = "asleep";
-            updateFish(this.emotion, this.timeActive % 3);
+            updateFish(this.emotion, this.timeActive);
             setTimeout(() => {
                 document.getElementById("light").src = "img/light_on.png";
                 this.emotion = "neutral";
-                updateFish(this.emotion, this.timeActive % 3);
+                updateFish(this.emotion, this.timeActive);
                 this.lock = false;
             }, 2000)
             let sleepiness = this.sleepiness.textContent;
