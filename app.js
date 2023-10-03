@@ -30,6 +30,11 @@ class Game {
                 this.die();
             }
         }, 10 * 1000) //10 sec
+        this.timeActive = 0;
+        this.fishInterval = setInterval(() => {
+            updateFish(this.emotion, this.timeActive % 3);
+            this.timeActive++;
+        }, 1000); // 1 sec
     }
     feed = () => {
         let hunger = this.hunger.textContent;

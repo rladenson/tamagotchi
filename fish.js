@@ -16,8 +16,11 @@ const fish = ["O",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(J<span class='orange'>JJ</span>|&nbsp;\\UUU",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(UU)"];
 
-const updateFish = (emotion, height) => {
-    fishEl.innerHTML += "<br><br><br>"
+const updateFish = (emotion, height = 0) => {
+    fishEl.innerHTML = "";
+    for(let i = 0; i < height + 3; i++) {
+        fishEl.innerHTML += "<br>";
+    }
     fish.forEach((line, i) => {
         fishEl.innerHTML += `<span>${line}</span><br>`;
     });
