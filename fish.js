@@ -16,7 +16,7 @@ const fish = ["${bubble1}",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(J<span class='orange'>JJ</span>|&nbsp;\\UUU",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(UU)"];
 
-const updateFish = (emotion = "neutral", timeActive = 0) => {
+const updateFish = (state = "neutral", timeActive = 0) => {
     fishEl.innerHTML = "";
     let height = 0;
     switch(timeActive % 4) {
@@ -36,18 +36,24 @@ const updateFish = (emotion = "neutral", timeActive = 0) => {
     let bubble3 = ".";
     let eye = "(<span class='yellow'>0</span>)";
     let mouth = "/T";
-    if (emotion === "asleep") {
+    if (state === "asleep") {
         bubble1 = "Z";
         bubble2 = "z";
         bubble3 = "z";
         eye = "--'";
         height = 4;
-    } else if (emotion === "eating") {
+    } else if (state === "eating") {
         height = 0;
         bubble1 = "&nbsp;&nbsp;★";
         bubble2 = "◆";
         bubble3 = "●";
         mouth = "\\'"
+    } else if(state === "dead") {
+        bubble1 = "&nbsp;"
+        bubble2 = "&nbsp;"
+        bubble3 = "&nbsp;"
+        eye = "--'";
+        height = 4;
     }
     
     for (let i = 0; i < height + 2; i++) {

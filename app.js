@@ -32,20 +32,20 @@ class Game {
             }
         }, 10 * 1000) //10 sec
         this.timeActive = 0;
-        this.emotion = "neutral";
+        this.state = "neutral";
         this.fishInterval = setInterval(() => {
             this.timeActive++;
-            updateFish(this.emotion, this.timeActive);
+            updateFish(this.state, this.timeActive);
         }, 1000); // 1 sec
     }
     feed = () => {
         if (!this.lock) {
             this.lock = true;
-            this.emotion = "eating";
-            updateFish(this.emotion, this.timeActive);
+            this.state = "eating";
+            updateFish(this.state, this.timeActive);
             setTimeout(() => {
-                this.emotion = "neutral";
-                updateFish(this.emotion, this.timeActive);
+                this.state = "neutral";
+                updateFish(this.state, this.timeActive);
                 this.lock = false;
             }, 2000)
             let hunger = this.hunger.textContent;
@@ -61,12 +61,12 @@ class Game {
             this.lock = true;
             document.getElementById("light").src = "img/light_off.png";
             document.body.style.backgroundColor = "rgba(79, 79, 37, 0.2)"
-            this.emotion = "asleep";
-            updateFish(this.emotion, this.timeActive);
+            this.state = "asleep";
+            updateFish(this.state, this.timeActive);
             setTimeout(() => {
                 document.getElementById("light").src = "img/light_on.png";
-                this.emotion = "neutral";
-                updateFish(this.emotion, this.timeActive);
+                this.state = "neutral";
+                updateFish(this.state, this.timeActive);
                 document.body.style.backgroundColor = "rgba(255, 255, 154, .2)"
                 this.lock = false;
             }, 2000)
@@ -91,12 +91,20 @@ class Game {
     die = () => {
         clearInterval(this.ageInterval);
         clearInterval(this.statsInterval);
+        clearInterval(this.fishInterval);
+        updateFish("dead");
         document.getElementById("actions").style.display = "none";
-        const endgame = document.createElement("h1");
+        let endgame = document.getElementById("endgame");
+        if(!endgame) {
+            endgame = document.createElement("h1");
+            endgame.id = "endgame";
+            document.getElementById("game").appendChild(endgame);
+        } else {
+            endgame.style.display = "revert";
+        }
         const color = "rgba(255, 0, 0, 0.4)";
         endgame.style.textShadow = `-1px 0 2px ${color}, 0 1px 2px ${color}, 1px 0 2px ${color}, 0 -1px 2px ${color}`;
-        endgame.textContent = `${this.name} died. They lived to the age of ${this.age.textContent}`;
-        document.getElementById("game").appendChild(endgame);
+        endgame.innerHTML = `${this.name} died. They lived to the age of ${this.age.textContent}<br><button onclick="newGame()">Play Again?</button>`;
     }
 }
 
@@ -104,4 +112,5 @@ const newGame = () => {
     tamagotchi = new Game(document.getElementById("nameInput").value);
     document.getElementById("setup").setAttribute("hidden", "");
     document.getElementById("game").removeAttribute("hidden");
+    document.getElementById("endgame").style.display = "none";
 }
