@@ -77,11 +77,12 @@ const updateFish = (state = "neutral", timeActive = 0, age = 0) => {
     }
 
     fish.forEach((line, i) => {
-        fishEl.innerHTML += `<span>${line.replace("${bubble1}", bubble1)
-            .replace("${bubble2}", bubble2)
-            .replace("${bubble3}", bubble3)
-            .replace("${eye}", eye)
-            .replace("${mouth}", mouth)
+        fishEl.innerHTML += `<span>${line
+            .replace(/\${bubble1}/, bubble1)
+            .replace(/\${bubble2}/, bubble2)
+            .replace(/\${bubble3}/, bubble3)
+            .replace(/\${eye}/, eye)
+            .replace(/\${mouth}/, mouth)
             .replace(/\${color1}/g, color1)
             .replace(/\${color2}/g, color2)
             .replace(/\${color3}/g, color3)
