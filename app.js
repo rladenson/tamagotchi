@@ -1,6 +1,6 @@
 let tamagotchi;
 class Game {
-    constructor(name) {
+    constructor(name, debug) {
         this.name = name;
         if (name === "")
             this.name = "Your tamagotchi";
