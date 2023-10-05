@@ -1,5 +1,6 @@
 const fishEl = document.getElementById("fish");
-const fish = ["${bubble1}",
+const fish = [
+    "${bubble1}",
     "&nbsp;${bubble2}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;___",
     "&nbsp;&nbsp;${bubble3}&nbsp;&nbsp;&nbsp;___======____=<span class='${color2}'>-</span><span class='${color3}'>-</span><span class='${color2}'>-=</span>)",
     "&nbsp;&nbsp;&nbsp;${mouth}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\_<span class='${color3}'>--=</span><span class='${color2}'>==</span>)",
@@ -14,7 +15,8 @@ const fish = ["${bubble1}",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\V)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\\_)&nbsp;<span class='${color2}'>\\\\<span class='${color3}'>\\\\JJ\\</span>J\\)</span>",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/<span class='${color2}'>J<span class='${color3}'>\\</span>J<span class='${color1}'>T\\</span>JJJ</span>J)",
     "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(J<span class='${color2}'>JJ</span>|&nbsp;\\UUU",
-    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(UU)"];
+    "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(UU)"
+];
 
 const updateFish = (state = "neutral", timeActive = 0, age = 0) => {
     fishEl.innerHTML = "";
@@ -31,6 +33,10 @@ const updateFish = (state = "neutral", timeActive = 0, age = 0) => {
             height = 0;
             break;
     }
+    for (let i = 0; i < height + 2; i++) {
+        fishEl.innerHTML += "<br>";
+    }
+
     let bubble1 = "O";
     let bubble2 = "o";
     let bubble3 = ".";
@@ -54,10 +60,6 @@ const updateFish = (state = "neutral", timeActive = 0, age = 0) => {
         bubble3 = "&nbsp;"
         eye = "--'";
         height = 4;
-    }
-
-    for (let i = 0; i < height + 2; i++) {
-        fishEl.innerHTML += "<br>";
     }
 
     let color1 = "purple";

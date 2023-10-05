@@ -83,14 +83,14 @@ class Game {
             this.lock = true;
             this.playX = 0;
             this.playInterval = setInterval(() => {
-                if(this.playX % 2 === 0) {
+                if (this.playX % 2 === 0) {
                     document.getElementById("fish").style.transform = "scaleX(-1)";
                 } else {
                     document.getElementById("fish").style.transform = "";
                 }
-                
+
                 this.playX++;
-                if(this.playX >= 4) {
+                if (this.playX >= 4) {
                     this.lock = false;
                     clearInterval(this.playInterval);
                     this.playX = undefined;
@@ -131,7 +131,7 @@ const newGame = (debug = 0) => {
     document.getElementById("game").removeAttribute("hidden");
     document.getElementById("actions").style.display = "";
     const endgame = document.getElementById("endgame");
-    if(endgame) {
+    if (endgame) {
         endgame.style.display = "none";
     }
 }
