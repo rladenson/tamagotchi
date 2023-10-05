@@ -35,6 +35,38 @@ footer {
     color: rgb(253, 186, 18);
 }
 
+.purple {
+    color: rgb(138, 41, 212);
+}
+
+.blue {
+    color: rgb(41, 41, 212);
+}
+
+.cyan {
+    color: rgb(41, 132, 212);
+}
+
+.redpurple {
+    color: #ae267f;
+}
+
+.orangeblue {
+    color: #8f567a;
+}
+
+.yellowcyan {
+    color: #939f73;
+}
+
+.little {
+    font-size: .7em;
+}
+
+.middle {
+    font-size: .8em;
+}
+
 img {
     max-width: 100%;
 }

@@ -20,7 +20,7 @@ class Game {
         document.getElementById("lights").onclick = this.lights;
         document.getElementById("play").onclick = this.play;
 
-        this.ageInterval = setInterval(() => this.age.textContent++, 1 * 1000 * 60) //1min
+        this.ageInterval = setInterval(() => this.age.textContent++, 1 * 60 * 1000) //1min
         this.statsInterval = setInterval(() => {
             this.hunger.textContent++;
             this.sleepiness.textContent++;
@@ -35,17 +35,17 @@ class Game {
         this.state = "neutral";
         this.fishInterval = setInterval(() => {
             this.timeActive++;
-            updateFish(this.state, this.timeActive);
+            updateFish(this.state, this.timeActive, this.age.textContent);
         }, 1000); // 1 sec
     }
     feed = () => {
         if (!this.lock) {
             this.lock = true;
             this.state = "eating";
-            updateFish(this.state, this.timeActive);
+            updateFish(this.state, this.timeActive, this.age.textContent);
             setTimeout(() => {
                 this.state = "neutral";
-                updateFish(this.state, this.timeActive);
+                updateFish(this.state, this.timeActive, this.age.textContent);
                 this.lock = false;
             }, 2000)
             let hunger = this.hunger.textContent;
@@ -62,11 +62,11 @@ class Game {
             document.getElementById("light").src = "img/light_off.png";
             document.body.style.backgroundColor = "rgba(79, 79, 37, 0.2)"
             this.state = "asleep";
-            updateFish(this.state, this.timeActive);
+            updateFish(this.state, this.timeActive, this.age.textContent);
             setTimeout(() => {
                 document.getElementById("light").src = "img/light_on.png";
                 this.state = "neutral";
-                updateFish(this.state, this.timeActive);
+                updateFish(this.state, this.timeActive, this.age.textContent);
                 document.body.style.backgroundColor = "rgba(255, 255, 154, .2)"
                 this.lock = false;
             }, 2000)
@@ -92,10 +92,10 @@ class Game {
         clearInterval(this.ageInterval);
         clearInterval(this.statsInterval);
         clearInterval(this.fishInterval);
-        updateFish("dead");
+        updateFish("dead", undefined, this.age.textContent);
         document.getElementById("actions").style.display = "none";
         let endgame = document.getElementById("endgame");
-        if(!endgame) {
+        if (!endgame) {
             endgame = document.createElement("h1");
             endgame.id = "endgame";
             document.getElementById("game").appendChild(endgame);
