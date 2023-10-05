@@ -20,7 +20,7 @@ class Game {
         document.getElementById("lights").onclick = this.lights;
         document.getElementById("play").onclick = this.play;
 
-        this.ageInterval = setInterval(() => this.age.textContent++, 1 * 60 * 1000) //1min
+        this.ageInterval = setInterval(() => this.age.textContent++, debug ? 2000 : 1 * 60 * 1000) //1min
         this.statsInterval = setInterval(() => {
             this.hunger.textContent++;
             this.sleepiness.textContent++;
@@ -125,8 +125,8 @@ class Game {
     }
 }
 
-const newGame = () => {
-    tamagotchi = new Game(document.getElementById("nameInput").value);
+const newGame = (debug = 0) => {
+    tamagotchi = new Game(document.getElementById("nameInput").value, debug);
     document.getElementById("setup").setAttribute("hidden", "");
     document.getElementById("game").removeAttribute("hidden");
     const endgame = document.getElementById("endgame");
