@@ -80,6 +80,23 @@ class Game {
     }
     play = () => {
         if (!this.lock) {
+            this.lock = true;
+            this.playX = 0;
+            this.playInterval = setInterval(() => {
+                if(this.playX % 2 === 0) {
+                    document.getElementById("fish").style.transform = "scaleX(-1)";
+                } else {
+                    document.getElementById("fish").style.transform = "";
+                }
+                
+                this.playX++;
+                if(this.playX >= 4) {
+                    this.lock = false;
+                    clearInterval(this.playInterval);
+                    this.playX = undefined;
+                }
+            }, 500)
+            this.set
             let boredom = this.boredom.textContent;
             boredom -= 3;
             if (boredom <= 0)
