@@ -129,5 +129,8 @@ const newGame = () => {
     tamagotchi = new Game(document.getElementById("nameInput").value);
     document.getElementById("setup").setAttribute("hidden", "");
     document.getElementById("game").removeAttribute("hidden");
-    document.getElementById("endgame").style.display = "none";
+    const endgame = document.getElementById("endgame");
+    if(endgame) {
+        endgame.style.display = "none";
+    }
 }
