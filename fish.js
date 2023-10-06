@@ -33,9 +33,6 @@ const updateFish = (state = "neutral", timeActive = 0, age = 0) => {
             height = 0;
             break;
     }
-    for (let i = 0; i < height + 2; i++) {
-        fishEl.innerHTML += "<br>";
-    }
 
     let bubble1 = "O";
     let bubble2 = "o";
@@ -60,6 +57,10 @@ const updateFish = (state = "neutral", timeActive = 0, age = 0) => {
         bubble3 = "&nbsp;"
         eye = "--'";
         height = 4;
+    }
+
+    for (let i = 0; i < height + 2; i++) {
+        fishEl.innerHTML += "<br>";
     }
 
     let color1 = "purple";
